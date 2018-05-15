@@ -1,0 +1,549 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A72B6A0220AA942000427020 /* JsonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72B6A0120AA942000427020 /* JsonType.swift */; };
+		A7514BD220A19E0B00F69BA6 /* AgoraSigKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7514BD120A19E0B00F69BA6 /* AgoraSigKit.framework */; };
+		A7514BD820A2D5E400F69BA6 /* LogWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7514BD720A2D5E400F69BA6 /* LogWriter.swift */; };
+		A7514BDA20A2EF1200F69BA6 /* AgoraAudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7514BD920A2EF1200F69BA6 /* AgoraAudioKit.framework */; };
+		A764F978209FFC8B0000EA7C /* BackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A764F977209FFC8B0000EA7C /* BackgroundViewController.swift */; };
+		A764F97A20A006680000EA7C /* BackgroundCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A764F97920A006680000EA7C /* BackgroundCell.swift */; };
+		A764F97C20A014AE0000EA7C /* AblumPickerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A764F97B20A014AE0000EA7C /* AblumPickerButton.swift */; };
+		A764F97E20A01B1C0000EA7C /* BackgroundOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A764F97D20A01B1C0000EA7C /* BackgroundOptions.swift */; };
+		A764F98520A0205B0000EA7C /* Problem.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A764F98220A0205A0000EA7C /* Problem.mp3 */; };
+		A764F98620A0205B0000EA7C /* 优しい雨.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A764F98320A0205A0000EA7C /* 优しい雨.mp3 */; };
+		A764F98720A0205B0000EA7C /* 泣いて笑って.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A764F98420A0205B0000EA7C /* 泣いて笑って.mp3 */; };
+		A764F98920A0207E0000EA7C /* Whats Up.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A764F98820A0207E0000EA7C /* Whats Up.mp3 */; };
+		A764F98B20A020980000EA7C /* MusicOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A764F98A20A020980000EA7C /* MusicOptions.swift */; };
+		A764F98D20A022CA0000EA7C /* BackMusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A764F98C20A022CA0000EA7C /* BackMusicViewController.swift */; };
+		A764F98F20A0253F0000EA7C /* MusicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A764F98E20A0253F0000EA7C /* MusicCell.swift */; };
+		A78C272920A4171A00271899 /* TitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78C272820A4171A00271899 /* TitleCell.swift */; };
+		A79FDCE4209C43BC00EB58B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79FDCE3209C43BC00EB58B5 /* AppDelegate.swift */; };
+		A79FDCE9209C43BC00EB58B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A79FDCE7209C43BC00EB58B5 /* Main.storyboard */; };
+		A79FDCEB209C43BC00EB58B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A79FDCEA209C43BC00EB58B5 /* Assets.xcassets */; };
+		A79FDCEE209C43BC00EB58B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A79FDCEC209C43BC00EB58B5 /* LaunchScreen.storyboard */; };
+		A79FDCFA209C4AB600EB58B5 /* UIView+ExProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = A79FDCF8209C4AB600EB58B5 /* UIView+ExProperty.m */; };
+		A79FDCFC209C4D5500EB58B5 /* RoomListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79FDCFB209C4D5500EB58B5 /* RoomListViewController.swift */; };
+		A79FDD06209C4F8600EB58B5 /* RoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79FDD05209C4F8600EB58B5 /* RoomCell.swift */; };
+		A79FDD0A209C51D500EB58B5 /* RoomInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79FDD09209C51D500EB58B5 /* RoomInfos.swift */; };
+		A79FDD0C209C683700EB58B5 /* InputRoomNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79FDD0B209C683700EB58B5 /* InputRoomNameViewController.swift */; };
+		A79FDD14209DF92800EB58B5 /* RoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79FDD13209DF92800EB58B5 /* RoomViewController.swift */; };
+		A79FDD16209DFD1100EB58B5 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79FDD15209DFD1100EB58B5 /* UserInfo.swift */; };
+		A79FDD18209ECBC900EB58B5 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79FDD17209ECBC900EB58B5 /* UserCell.swift */; };
+		A79FDD1C209EE2E500EB58B5 /* MomentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79FDD1B209EE2E500EB58B5 /* MomentsCell.swift */; };
+		A79FDD23209FF47C00EB58B5 /* BuildRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79FDD22209FF47C00EB58B5 /* BuildRoomViewController.swift */; };
+		A7F1FC2720A14C0E00CAEECE /* MomentsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F1FC2620A14C0E00CAEECE /* MomentsInfo.swift */; };
+		A7F1FC2A20A14E7800CAEECE /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F1FC2920A14E7800CAEECE /* libresolv.tbd */; };
+		A7F1FC2C20A14E8000CAEECE /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F1FC2B20A14E8000CAEECE /* CoreTelephony.framework */; };
+		A7F1FC2E20A14E8A00CAEECE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F1FC2D20A14E8A00CAEECE /* AudioToolbox.framework */; };
+		A7F1FC3020A14E9300CAEECE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F1FC2F20A14E9300CAEECE /* SystemConfiguration.framework */; };
+		A7F1FC3220A14E9900CAEECE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F1FC3120A14E9900CAEECE /* AVFoundation.framework */; };
+		A7F1FC3420A14EA300CAEECE /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F1FC3320A14EA300CAEECE /* libc++.tbd */; };
+		A7F1FC3820A1501F00CAEECE /* KeyCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F1FC3720A1501F00CAEECE /* KeyCenter.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A72B6A0120AA942000427020 /* JsonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonType.swift; sourceTree = "<group>"; };
+		A7514BD120A19E0B00F69BA6 /* AgoraSigKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AgoraSigKit.framework; path = AgoraChat/AgoraSigKit.framework; sourceTree = "<group>"; };
+		A7514BD720A2D5E400F69BA6 /* LogWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogWriter.swift; sourceTree = "<group>"; };
+		A7514BD920A2EF1200F69BA6 /* AgoraAudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AgoraAudioKit.framework; path = AgoraChat/AgoraAudioKit.framework; sourceTree = "<group>"; };
+		A764F977209FFC8B0000EA7C /* BackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundViewController.swift; sourceTree = "<group>"; };
+		A764F97920A006680000EA7C /* BackgroundCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundCell.swift; sourceTree = "<group>"; };
+		A764F97B20A014AE0000EA7C /* AblumPickerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AblumPickerButton.swift; sourceTree = "<group>"; };
+		A764F97D20A01B1C0000EA7C /* BackgroundOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundOptions.swift; sourceTree = "<group>"; };
+		A764F98220A0205A0000EA7C /* Problem.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Problem.mp3; sourceTree = "<group>"; };
+		A764F98320A0205A0000EA7C /* 优しい雨.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "优しい雨.mp3"; sourceTree = "<group>"; };
+		A764F98420A0205B0000EA7C /* 泣いて笑って.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "泣いて笑って.mp3"; sourceTree = "<group>"; };
+		A764F98820A0207E0000EA7C /* Whats Up.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Whats Up.mp3"; sourceTree = "<group>"; };
+		A764F98A20A020980000EA7C /* MusicOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicOptions.swift; sourceTree = "<group>"; };
+		A764F98C20A022CA0000EA7C /* BackMusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackMusicViewController.swift; sourceTree = "<group>"; };
+		A764F98E20A0253F0000EA7C /* MusicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCell.swift; sourceTree = "<group>"; };
+		A78C272820A4171A00271899 /* TitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCell.swift; sourceTree = "<group>"; };
+		A79FDCE0209C43BC00EB58B5 /* AgoraOnlineChatroom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AgoraOnlineChatroom.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A79FDCE3209C43BC00EB58B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A79FDCE8209C43BC00EB58B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A79FDCEA209C43BC00EB58B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A79FDCED209C43BC00EB58B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A79FDCEF209C43BC00EB58B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A79FDCF7209C4AB500EB58B5 /* AgoraChat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AgoraChat-Bridging-Header.h"; sourceTree = "<group>"; };
+		A79FDCF8209C4AB600EB58B5 /* UIView+ExProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ExProperty.m"; sourceTree = "<group>"; };
+		A79FDCF9209C4AB600EB58B5 /* UIView+ExProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ExProperty.h"; sourceTree = "<group>"; };
+		A79FDCFB209C4D5500EB58B5 /* RoomListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListViewController.swift; sourceTree = "<group>"; };
+		A79FDD05209C4F8600EB58B5 /* RoomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomCell.swift; sourceTree = "<group>"; };
+		A79FDD09209C51D500EB58B5 /* RoomInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomInfos.swift; sourceTree = "<group>"; };
+		A79FDD0B209C683700EB58B5 /* InputRoomNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputRoomNameViewController.swift; sourceTree = "<group>"; };
+		A79FDD13209DF92800EB58B5 /* RoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomViewController.swift; sourceTree = "<group>"; };
+		A79FDD15209DFD1100EB58B5 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		A79FDD17209ECBC900EB58B5 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		A79FDD1B209EE2E500EB58B5 /* MomentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentsCell.swift; sourceTree = "<group>"; };
+		A79FDD22209FF47C00EB58B5 /* BuildRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildRoomViewController.swift; sourceTree = "<group>"; };
+		A7F1FC2620A14C0E00CAEECE /* MomentsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentsInfo.swift; sourceTree = "<group>"; };
+		A7F1FC2920A14E7800CAEECE /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		A7F1FC2B20A14E8000CAEECE /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		A7F1FC2D20A14E8A00CAEECE /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		A7F1FC2F20A14E9300CAEECE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A7F1FC3120A14E9900CAEECE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		A7F1FC3320A14EA300CAEECE /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		A7F1FC3720A1501F00CAEECE /* KeyCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCenter.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A79FDCDD209C43BC00EB58B5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7514BDA20A2EF1200F69BA6 /* AgoraAudioKit.framework in Frameworks */,
+				A7514BD220A19E0B00F69BA6 /* AgoraSigKit.framework in Frameworks */,
+				A7F1FC3420A14EA300CAEECE /* libc++.tbd in Frameworks */,
+				A7F1FC3220A14E9900CAEECE /* AVFoundation.framework in Frameworks */,
+				A7F1FC3020A14E9300CAEECE /* SystemConfiguration.framework in Frameworks */,
+				A7F1FC2E20A14E8A00CAEECE /* AudioToolbox.framework in Frameworks */,
+				A7F1FC2C20A14E8000CAEECE /* CoreTelephony.framework in Frameworks */,
+				A7F1FC2A20A14E7800CAEECE /* libresolv.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A764F98120A01FFD0000EA7C /* MusicFiles */ = {
+			isa = PBXGroup;
+			children = (
+				A764F98820A0207E0000EA7C /* Whats Up.mp3 */,
+				A764F98320A0205A0000EA7C /* 优しい雨.mp3 */,
+				A764F98220A0205A0000EA7C /* Problem.mp3 */,
+				A764F98420A0205B0000EA7C /* 泣いて笑って.mp3 */,
+			);
+			path = MusicFiles;
+			sourceTree = "<group>";
+		};
+		A764F99020A033460000EA7C /* Popover */ = {
+			isa = PBXGroup;
+			children = (
+				A79FDD0B209C683700EB58B5 /* InputRoomNameViewController.swift */,
+				A764F977209FFC8B0000EA7C /* BackgroundViewController.swift */,
+				A764F98C20A022CA0000EA7C /* BackMusicViewController.swift */,
+			);
+			name = Popover;
+			sourceTree = "<group>";
+		};
+		A79FDCD7209C43BC00EB58B5 = {
+			isa = PBXGroup;
+			children = (
+				A79FDCE2209C43BC00EB58B5 /* AgoraOnlineChatroom */,
+				A79FDCE1209C43BC00EB58B5 /* Products */,
+				A7F1FC2820A14E7700CAEECE /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		A79FDCE1209C43BC00EB58B5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A79FDCE0209C43BC00EB58B5 /* AgoraOnlineChatroom.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A79FDCE2209C43BC00EB58B5 /* AgoraOnlineChatroom */ = {
+			isa = PBXGroup;
+			children = (
+				A79FDCE3209C43BC00EB58B5 /* AppDelegate.swift */,
+				A79FDCE7209C43BC00EB58B5 /* Main.storyboard */,
+				A79FDD01209C4D8A00EB58B5 /* Model */,
+				A79FDD04209C4F5C00EB58B5 /* View */,
+				A79FDCFD209C4D6100EB58B5 /* Controller */,
+				A764F99020A033460000EA7C /* Popover */,
+				A79FDD03209C4DF600EB58B5 /* Others */,
+				A79FDD02209C4DCA00EB58B5 /* Supporting Files  */,
+			);
+			path = AgoraOnlineChatroom;
+			sourceTree = "<group>";
+		};
+		A79FDCFD209C4D6100EB58B5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A79FDCFB209C4D5500EB58B5 /* RoomListViewController.swift */,
+				A79FDD22209FF47C00EB58B5 /* BuildRoomViewController.swift */,
+				A79FDD13209DF92800EB58B5 /* RoomViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		A79FDD01209C4D8A00EB58B5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A79FDD09209C51D500EB58B5 /* RoomInfos.swift */,
+				A79FDD15209DFD1100EB58B5 /* UserInfo.swift */,
+				A7F1FC2620A14C0E00CAEECE /* MomentsInfo.swift */,
+				A764F97D20A01B1C0000EA7C /* BackgroundOptions.swift */,
+				A764F98A20A020980000EA7C /* MusicOptions.swift */,
+				A7F1FC3720A1501F00CAEECE /* KeyCenter.swift */,
+				A72B6A0120AA942000427020 /* JsonType.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		A79FDD02209C4DCA00EB58B5 /* Supporting Files  */ = {
+			isa = PBXGroup;
+			children = (
+				A764F98120A01FFD0000EA7C /* MusicFiles */,
+				A79FDCEA209C43BC00EB58B5 /* Assets.xcassets */,
+				A79FDCEC209C43BC00EB58B5 /* LaunchScreen.storyboard */,
+				A79FDCEF209C43BC00EB58B5 /* Info.plist */,
+				A79FDCF7209C4AB500EB58B5 /* AgoraChat-Bridging-Header.h */,
+			);
+			name = "Supporting Files ";
+			sourceTree = "<group>";
+		};
+		A79FDD03209C4DF600EB58B5 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				A79FDCF9209C4AB600EB58B5 /* UIView+ExProperty.h */,
+				A79FDCF8209C4AB600EB58B5 /* UIView+ExProperty.m */,
+				A7514BD720A2D5E400F69BA6 /* LogWriter.swift */,
+			);
+			name = Others;
+			sourceTree = "<group>";
+		};
+		A79FDD04209C4F5C00EB58B5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A79FDD05209C4F8600EB58B5 /* RoomCell.swift */,
+				A79FDD17209ECBC900EB58B5 /* UserCell.swift */,
+				A79FDD1B209EE2E500EB58B5 /* MomentsCell.swift */,
+				A764F97920A006680000EA7C /* BackgroundCell.swift */,
+				A764F97B20A014AE0000EA7C /* AblumPickerButton.swift */,
+				A764F98E20A0253F0000EA7C /* MusicCell.swift */,
+				A78C272820A4171A00271899 /* TitleCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		A7F1FC2820A14E7700CAEECE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A7514BD920A2EF1200F69BA6 /* AgoraAudioKit.framework */,
+				A7514BD120A19E0B00F69BA6 /* AgoraSigKit.framework */,
+				A7F1FC3320A14EA300CAEECE /* libc++.tbd */,
+				A7F1FC3120A14E9900CAEECE /* AVFoundation.framework */,
+				A7F1FC2F20A14E9300CAEECE /* SystemConfiguration.framework */,
+				A7F1FC2D20A14E8A00CAEECE /* AudioToolbox.framework */,
+				A7F1FC2B20A14E8000CAEECE /* CoreTelephony.framework */,
+				A7F1FC2920A14E7800CAEECE /* libresolv.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A79FDCDF209C43BC00EB58B5 /* AgoraOnlineChatroom */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A79FDCF2209C43BC00EB58B5 /* Build configuration list for PBXNativeTarget "AgoraOnlineChatroom" */;
+			buildPhases = (
+				A79FDCDC209C43BC00EB58B5 /* Sources */,
+				A79FDCDD209C43BC00EB58B5 /* Frameworks */,
+				A79FDCDE209C43BC00EB58B5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AgoraOnlineChatroom;
+			productName = AgoraChat;
+			productReference = A79FDCE0209C43BC00EB58B5 /* AgoraOnlineChatroom.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A79FDCD8209C43BC00EB58B5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = CavanSu;
+				TargetAttributes = {
+					A79FDCDF209C43BC00EB58B5 = {
+						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
+						ProvisioningStyle = Manual;
+					};
+				};
+			};
+			buildConfigurationList = A79FDCDB209C43BC00EB58B5 /* Build configuration list for PBXProject "AgoraOnlineChatroom" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A79FDCD7209C43BC00EB58B5;
+			productRefGroup = A79FDCE1209C43BC00EB58B5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A79FDCDF209C43BC00EB58B5 /* AgoraOnlineChatroom */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A79FDCDE209C43BC00EB58B5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A79FDCEE209C43BC00EB58B5 /* LaunchScreen.storyboard in Resources */,
+				A764F98720A0205B0000EA7C /* 泣いて笑って.mp3 in Resources */,
+				A79FDCEB209C43BC00EB58B5 /* Assets.xcassets in Resources */,
+				A764F98620A0205B0000EA7C /* 优しい雨.mp3 in Resources */,
+				A764F98520A0205B0000EA7C /* Problem.mp3 in Resources */,
+				A764F98920A0207E0000EA7C /* Whats Up.mp3 in Resources */,
+				A79FDCE9209C43BC00EB58B5 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A79FDCDC209C43BC00EB58B5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7F1FC3820A1501F00CAEECE /* KeyCenter.swift in Sources */,
+				A764F98D20A022CA0000EA7C /* BackMusicViewController.swift in Sources */,
+				A764F97E20A01B1C0000EA7C /* BackgroundOptions.swift in Sources */,
+				A764F978209FFC8B0000EA7C /* BackgroundViewController.swift in Sources */,
+				A79FDCFA209C4AB600EB58B5 /* UIView+ExProperty.m in Sources */,
+				A79FDD0A209C51D500EB58B5 /* RoomInfos.swift in Sources */,
+				A764F97C20A014AE0000EA7C /* AblumPickerButton.swift in Sources */,
+				A79FDD14209DF92800EB58B5 /* RoomViewController.swift in Sources */,
+				A79FDCE4209C43BC00EB58B5 /* AppDelegate.swift in Sources */,
+				A79FDD16209DFD1100EB58B5 /* UserInfo.swift in Sources */,
+				A79FDD23209FF47C00EB58B5 /* BuildRoomViewController.swift in Sources */,
+				A7F1FC2720A14C0E00CAEECE /* MomentsInfo.swift in Sources */,
+				A78C272920A4171A00271899 /* TitleCell.swift in Sources */,
+				A79FDD18209ECBC900EB58B5 /* UserCell.swift in Sources */,
+				A764F98F20A0253F0000EA7C /* MusicCell.swift in Sources */,
+				A764F98B20A020980000EA7C /* MusicOptions.swift in Sources */,
+				A72B6A0220AA942000427020 /* JsonType.swift in Sources */,
+				A79FDD0C209C683700EB58B5 /* InputRoomNameViewController.swift in Sources */,
+				A764F97A20A006680000EA7C /* BackgroundCell.swift in Sources */,
+				A79FDD06209C4F8600EB58B5 /* RoomCell.swift in Sources */,
+				A79FDCFC209C4D5500EB58B5 /* RoomListViewController.swift in Sources */,
+				A79FDD1C209EE2E500EB58B5 /* MomentsCell.swift in Sources */,
+				A7514BD820A2D5E400F69BA6 /* LogWriter.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A79FDCE7209C43BC00EB58B5 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A79FDCE8209C43BC00EB58B5 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A79FDCEC209C43BC00EB58B5 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A79FDCED209C43BC00EB58B5 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A79FDCF0209C43BC00EB58B5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A79FDCF1209C43BC00EB58B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A79FDCF3209C43BC00EB58B5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 48TB6ZZL5S;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AgoraOnlineChatroom",
+				);
+				INFOPLIST_FILE = AgoraOnlineChatroom/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.agora.AgoraChat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "cb87e624-3d61-4895-9bcf-da59ccd1192b";
+				PROVISIONING_PROFILE_SPECIFIER = AgoraIODev2017;
+				SWIFT_OBJC_BRIDGING_HEADER = "AgoraOnlineChatroom/AgoraChat-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A79FDCF4209C43BC00EB58B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 48TB6ZZL5S;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AgoraOnlineChatroom",
+				);
+				INFOPLIST_FILE = AgoraOnlineChatroom/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.agora.AgoraChat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "cb87e624-3d61-4895-9bcf-da59ccd1192b";
+				PROVISIONING_PROFILE_SPECIFIER = AgoraIODev2017;
+				SWIFT_OBJC_BRIDGING_HEADER = "AgoraOnlineChatroom/AgoraChat-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A79FDCDB209C43BC00EB58B5 /* Build configuration list for PBXProject "AgoraOnlineChatroom" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A79FDCF0209C43BC00EB58B5 /* Debug */,
+				A79FDCF1209C43BC00EB58B5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A79FDCF2209C43BC00EB58B5 /* Build configuration list for PBXNativeTarget "AgoraOnlineChatroom" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A79FDCF3209C43BC00EB58B5 /* Debug */,
+				A79FDCF4209C43BC00EB58B5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A79FDCD8209C43BC00EB58B5 /* Project object */;
+}
