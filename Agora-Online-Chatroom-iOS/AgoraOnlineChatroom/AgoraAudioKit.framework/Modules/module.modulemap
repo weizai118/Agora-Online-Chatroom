@@ -1,6 +1,0 @@
-framework module AgoraAudioKit {
-    umbrella header "AgoraAudioKit.h"
-    
-    export *
-    module * { export * }
-}
