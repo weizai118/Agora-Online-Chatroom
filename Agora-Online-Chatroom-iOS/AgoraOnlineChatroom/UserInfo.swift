@@ -9,6 +9,7 @@
 import UIKit
 
 struct UserInfo {
+    var uid: UInt!
     var headImage: UIImage!
     var name: String!
     

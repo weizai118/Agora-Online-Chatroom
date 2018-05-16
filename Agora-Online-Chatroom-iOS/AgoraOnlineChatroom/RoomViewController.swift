@@ -75,10 +75,6 @@ class RoomViewController: UIViewController {
         return array
     }()
     
-    lazy var colUidIndexDic: [UInt: Int] = {() -> [UInt: Int] in
-        return [UInt: Int]()
-    }()
-    
     lazy var momentsList: [MomentsInfo] = {() -> [MomentsInfo] in
         return [MomentsInfo]()
     }()
@@ -246,13 +242,13 @@ private extension RoomViewController {
     func appendCurrentUser() {
         let index = totalUserList.count
         totalUidIndexDic[currentUid] = index
-        let user = currentUser
+        var user = currentUser
         totalUserList.append(user!)
         
+        user?.uid = currentUid
         colUserList.append(user!)
         let item = colUserList.count - 1
-        colUidIndexDic[currentUid] = item
-        
+    
         let indexPath = IndexPath(item: item, section: 0)
         userCollectionView.insertItems(at: [indexPath])
     }
@@ -269,20 +265,31 @@ private extension RoomViewController {
             totalUserList.append(user)
         }
         
-        guard let _ = colUidIndexDic[uid] else {
+        guard let _ = getColUserWith(uid: uid) else {
+            user.uid = uid
             colUserList.append(user)
             let item = colUserList.count - 1
-            colUidIndexDic[uid] = item
             let indexPath = IndexPath(item: item, section: 0)
             userCollectionView.insertItems(at: [indexPath])
             return
         }
     }
     
-    func getUserWith(uid: UInt) -> UserInfo {
+    func getTotalUserWith(uid: UInt) -> UserInfo {
         let index = totalUidIndexDic[uid]
         let user = totalUserList[index!]
         return user
+    }
+    
+    func getColUserWith(uid: UInt) -> UserInfo? {
+        var user: UserInfo?
+        for item in colUserList {
+            if item.uid == uid {
+                user = item
+                return user
+            }
+        }
+        return nil
     }
     
     func appendNewMoments(uid: UInt, msg: String) {
@@ -297,13 +304,19 @@ private extension RoomViewController {
     }
     
     func removeUser(uid: UInt) {
-        guard let index = colUidIndexDic[uid] else {
-            return
+        var deletedIndex: Int?
+        for (index, item) in colUserList.enumerated() {
+            if item.uid == uid {
+                deletedIndex = index
+                break
+            }
         }
-        colUidIndexDic.removeValue(forKey: uid)
-        colUserList.remove(at: index)
-        let indexPath = IndexPath(item: index, section: 0)
-        userCollectionView.deleteItems(at: [indexPath])
+        
+        if let index = deletedIndex {
+            colUserList.remove(at: index)
+            let indexPath = IndexPath(item: index, section: 0)
+            userCollectionView.deleteItems(at: [indexPath])
+        }
     }
     
     func leaveRoom() {
@@ -353,9 +366,9 @@ private extension RoomViewController {
             if let strongSelf = self, let account = account, !account.isEmpty {
                 DispatchQueue.main.async {
                     strongSelf.appendNewUser(uid: UInt(account)!)
-                    strongSelf.sendChannelCurrentUserIsOwner()
+                    strongSelf.sendPeerCurrentUserInChannel(toPeerUid: account)
                     strongSelf.appendNewMoments(uid: UInt(account)!, msg: "加入频道")
-                    strongSelf.sendChannelOwnerChangedBackground()
+                    strongSelf.sendPeerOwnerBackground(toPeerUid: account)
                 }
             }
         }
@@ -378,7 +391,6 @@ private extension RoomViewController {
                         let message = receiveDic["msg"] as! String
                         
                         switch type {
-                            case 0: strongSelf.receiveOwner(account: account)
                             case 1: strongSelf.receiveOwnerLeaveChannel()
                             case 2: strongSelf.appendNewMoments(uid: UInt(account)!, msg: message)
                             case 5: strongSelf.receiveOwnerChangeBackground(index: message)
@@ -398,10 +410,11 @@ private extension RoomViewController {
                         let message = receiveDic["msg"] as! String
                         
                         switch type {
-                        case 3: strongSelf.receiveRemoteUserApplyForLinking(account: account)
-                        case 4: strongSelf.receiveResultOfApplyForLinking(result: message)
-                        case 5: strongSelf.receiveOwnerChangeBackground(index: message)
-                        default: break
+                            case 0: strongSelf.receiveOthersInChannel(account: account, msg: message)
+                            case 3: strongSelf.receiveRemoteUserApplyForLinking(account: account)
+                            case 4: strongSelf.receiveResultOfApplyForLinking(result: message)
+                            case 5: strongSelf.receiveOwnerChangeBackground(index: message)
+                            default: break
                         }
                     }
                 }
@@ -429,14 +442,7 @@ private extension RoomViewController {
         
     }
     
-//MARK: Send Message
-    func sendChannelCurrentUserIsOwner() {
-        if let currentUid = currentUid, role == .owner {
-            let jsonDic: [String : Any] = ["account": currentUid, "role": role.rawValue(), "type": JsonType.tellOthersThereIsOwner.rawValue, "msg": ""]
-            sendChannelInfo(jsonDic: jsonDic)
-        }
-    }
-    
+//MARK: Send Channel Message
     func sendChannelOwnerLeaveMessage() {
         if let currentUid = currentUid, role == .owner {
             let jsonDic: [String : Any] = ["account": currentUid, "role": role.rawValue(), "type": JsonType.ownerLeaveChannel.rawValue, "msg": ""]
@@ -449,6 +455,15 @@ private extension RoomViewController {
             let message = "\(bgIndex)"
             let jsonDic: [String : Any] = ["account": currentUid, "role": role.rawValue(), "type": JsonType.ownerChangedBg.rawValue, "msg": message]
             sendChannelInfo(jsonDic: jsonDic)
+        }
+    }
+    
+//MARK: Send Peer Message
+    func sendPeerCurrentUserInChannel(toPeerUid: String) {
+        if let currentUid = currentUid {
+            let message = "\(role.rawValue())"
+            let jsonDic: [String : Any] = ["account": currentUid, "role": role.rawValue(), "type": JsonType.currentInChannel.rawValue, "msg": message]
+            sendPeerInfo(jsonDic: jsonDic, toPeer: toPeerUid)
         }
     }
     
@@ -490,14 +505,21 @@ private extension RoomViewController {
     }
     
     //MARK: Receive Message
-    func receiveOwner(account: String) {
-        if role != .owner {
-            roomOwner = account
-            appendNewUser(uid: UInt(account)!)
-            appendNewMoments(uid: UInt(account)!, msg: "房主")
-            let owner = getUserWith(uid: UInt(account)!)
-            currenHeadImageView.image = owner.headImage
-            currentNameLabel.text = owner.name
+    func receiveOthersInChannel(account: String, msg: String) {
+        if let remoteRole = Int(msg) {
+            if role != .owner {
+                if remoteRole == 0 {
+                    roomOwner = account
+                    appendNewUser(uid: UInt(account)!)
+                    appendNewMoments(uid: UInt(account)!, msg: "房主")
+                    let owner = getTotalUserWith(uid: UInt(account)!)
+                    currenHeadImageView.image = owner.headImage
+                    currentNameLabel.text = owner.name
+                } else {
+                    appendNewUser(uid: UInt(account)!)
+                    appendNewMoments(uid: UInt(account)!, msg: "加入频道")
+                }
+            }
         }
     }
     
@@ -513,12 +535,15 @@ private extension RoomViewController {
     }
     
     func receiveRemoteUserApplyForLinking(account: String) {
-        if role == .owner {
+        if role == .owner, let uid = UInt(account) {
             applyForLinkingUser = account
-            
-            let uid = UInt(account)
-            let index = colUidIndexDic[uid!]
-            let user = colUserList[index!]
+            var user: UserInfo!
+            for item in colUserList {
+                if item.uid == uid {
+                    user = item
+                }
+            }
+
             let alertController = UIAlertController.init(title: "申请连麦", message: user.name, preferredStyle: .alert)
             let agreeAction = UIAlertAction.init(title: "同意", style: .default) { [weak self] (action) in
                 self?.decisionOfAppleForLinking(isAgree: true)
