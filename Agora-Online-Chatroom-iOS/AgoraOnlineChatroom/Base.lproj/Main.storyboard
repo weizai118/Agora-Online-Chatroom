@@ -15,7 +15,7 @@
         <!--Room List View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="RoomListViewController" customModule="AgoraChat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="RoomListViewController" customModule="AgoraOnlineChatroom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -36,7 +36,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="room" id="suc-cI-CF7" customClass="RoomCell" customModule="AgoraChat" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="room" id="suc-cI-CF7" customClass="RoomCell" customModule="AgoraOnlineChatroom" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="165" height="172"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -161,7 +161,7 @@
         <!--Input Room Id View Controller-->
         <scene sceneID="ufP-fY-S0m">
             <objects>
-                <viewController id="rTe-KX-yjx" customClass="InputRoomIdViewController" customModule="AgoraChat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rTe-KX-yjx" customClass="InputRoomIdViewController" customModule="AgoraOnlineChatroom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="o58-UX-mhY">
                         <rect key="frame" x="0.0" y="0.0" width="220" height="180"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -222,7 +222,7 @@
         <!--Build Room View Controller-->
         <scene sceneID="kIc-m9-bC4">
             <objects>
-                <viewController id="3Jw-qc-tDF" customClass="BuildRoomViewController" customModule="AgoraChat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="3Jw-qc-tDF" customClass="BuildRoomViewController" customModule="AgoraOnlineChatroom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iUh-3w-v4o">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -270,7 +270,7 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TitleCell" id="qXc-tx-Edk" customClass="TitleCell" customModule="AgoraChat" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TitleCell" id="qXc-tx-Edk" customClass="TitleCell" customModule="AgoraOnlineChatroom" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="88" height="102"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -428,7 +428,7 @@
         <!--Room View Controller-->
         <scene sceneID="p9i-g1-GtB">
             <objects>
-                <viewController storyboardIdentifier="RoomViewController" id="ay1-ud-NY5" customClass="RoomViewController" customModule="AgoraChat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RoomViewController" id="ay1-ud-NY5" customClass="RoomViewController" customModule="AgoraOnlineChatroom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xff-jD-VgQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -492,7 +492,7 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="userCell" id="hQJ-ZK-F2X" customClass="UserCell" customModule="AgoraChat" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="userCell" id="hQJ-ZK-F2X" customClass="UserCell" customModule="AgoraOnlineChatroom" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="64" height="73"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -606,7 +606,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="momentsCell" rowHeight="139" id="uLE-Rk-Tge" customClass="MomentsCell" customModule="AgoraChat" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="momentsCell" rowHeight="139" id="uLE-Rk-Tge" customClass="MomentsCell" customModule="AgoraOnlineChatroom" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="345" height="139"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uLE-Rk-Tge" id="4Qg-R3-lgi">
@@ -756,6 +756,7 @@
                                         <rect key="frame" x="285" y="511" width="30" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="ApplyFor"/>
+                                        <state key="selected" image="ApplyFor_Selected"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="15"/>
@@ -856,7 +857,7 @@
         <!--Background View Controller-->
         <scene sceneID="syH-51-CG2">
             <objects>
-                <viewController id="ntI-Pr-TtE" customClass="BackgroundViewController" customModule="AgoraChat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ntI-Pr-TtE" customClass="BackgroundViewController" customModule="AgoraOnlineChatroom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jCs-ei-Ei3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -877,7 +878,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BackgroundCell" id="JDo-7N-tUX" customClass="BackgroundCell" customModule="AgoraChat" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BackgroundCell" id="JDo-7N-tUX" customClass="BackgroundCell" customModule="AgoraOnlineChatroom" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="132" height="129"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -931,7 +932,7 @@
         <!--Back Music View Controller-->
         <scene sceneID="jqp-KK-8eT">
             <objects>
-                <viewController id="b5l-1M-bc4" customClass="BackMusicViewController" customModule="AgoraChat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="b5l-1M-bc4" customClass="BackMusicViewController" customModule="AgoraOnlineChatroom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="b79-oz-bgl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -946,7 +947,7 @@
                                 <rect key="frame" x="0.0" y="87.5" width="375" height="579.5"/>
                                 <color key="backgroundColor" red="0.10749887675046921" green="0.17684239149093628" blue="0.16893592476844788" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MusicCell" id="x9g-tQ-b9I" customClass="MusicCell" customModule="AgoraChat" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MusicCell" id="x9g-tQ-b9I" customClass="MusicCell" customModule="AgoraOnlineChatroom" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="x9g-tQ-b9I" id="17W-Ax-QeA">
@@ -1033,6 +1034,7 @@
     <resources>
         <image name="Album" width="64" height="64"/>
         <image name="ApplyFor" width="64" height="64"/>
+        <image name="ApplyFor_Selected" width="64" height="64"/>
         <image name="ArrowBottom" width="64" height="64"/>
         <image name="ArrowLeft" width="64" height="64"/>
         <image name="Mic" width="64" height="64"/>

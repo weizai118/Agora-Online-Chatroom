@@ -33,18 +33,21 @@ class RoomViewController: UIViewController {
                 musicButton.isHidden = false
                 applyForButton.isHidden = true
                 micButton.isEnabled = true
+                agoraMediaKit.setClientRole(.broadcaster)
             case .broadcast:
                 albumButton.isHidden = true
                 musicButton.isHidden = true
-                applyForButton.isHidden = true
+                applyForButton.isHidden = false
                 applyForButton.isSelected = true
                 micButton.isEnabled = true
+                agoraMediaKit.setClientRole(.broadcaster)
             case .audience:
                 albumButton.isHidden = true
                 musicButton.isHidden = true
                 applyForButton.isHidden = false
                 applyForButton.isSelected = false
                 micButton.isEnabled = false
+                agoraMediaKit.setClientRole(.audience)
             default: break
             }
         }
@@ -82,12 +85,12 @@ class RoomViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        
+        loadAgoraMediaKit()
+        loadAgoraSigKit()
         updateCurrenUserInfo()
         updateRoomInfo()
         updateViewsSettings()
         addKeyboardObserver()
-        loadAgoraMediaKit()
-        loadAgoraSigKit()
         mediaJoinChannel()
     }
     
@@ -133,7 +136,12 @@ class RoomViewController: UIViewController {
     }
     
     @IBAction func doApplyForLinkingPressed(_ sender: UIButton) {
-        sendPeerApplyForLinkingRequest()
+        if role == .audience {
+            sendPeerApplyForLinkingRequest()
+        } else if role == .broadcast {
+            role = .audience
+            
+        }
     }
 }
 
@@ -141,11 +149,6 @@ private extension RoomViewController {
     func loadAgoraMediaKit() {
         agoraMediaKit = AgoraRtcEngineKit.sharedEngine(withAppId: KeyCenter.appId(), delegate: self)
         agoraMediaKit.setChannelProfile(.liveBroadcasting)
-        if role == .audience {
-            agoraMediaKit.setClientRole(.audience)
-        } else {
-            agoraMediaKit.setClientRole(.broadcaster)
-        }
     }
     
     func mediaJoinChannel() {
@@ -408,9 +411,10 @@ private extension RoomViewController {
                         let receiveDic = dic as! [String : Any]
                         let type = receiveDic["type"] as! Int
                         let message = receiveDic["msg"] as! String
-                        
+                        let role = receiveDic["role"] as! Int
+ 
                         switch type {
-                            case 0: strongSelf.receiveOthersInChannel(account: account, msg: message)
+                            case 0: strongSelf.receiveOthersInChannel(account: account, remoteRole: role)
                             case 3: strongSelf.receiveRemoteUserApplyForLinking(account: account)
                             case 4: strongSelf.receiveResultOfApplyForLinking(result: message)
                             case 5: strongSelf.receiveOwnerChangeBackground(index: message)
@@ -505,8 +509,7 @@ private extension RoomViewController {
     }
     
     //MARK: Receive Message
-    func receiveOthersInChannel(account: String, msg: String) {
-        if let remoteRole = Int(msg) {
+    func receiveOthersInChannel(account: String, remoteRole: Int) {
             if role != .owner {
                 if remoteRole == 0 {
                     roomOwner = account
@@ -520,7 +523,6 @@ private extension RoomViewController {
                     appendNewMoments(uid: UInt(account)!, msg: "加入频道")
                 }
             }
-        }
     }
     
     func receiveOwnerLeaveChannel() {
@@ -569,7 +571,6 @@ private extension RoomViewController {
     func receiveResultOfApplyForLinking(result: String) {
         let isAgree = Int(result)
         if role != .owner || role != .broadcast, let isAgree = isAgree, isAgree == 1 {
-            agoraMediaKit.setClientRole(.broadcaster)
             role = .broadcast
         }
     }
