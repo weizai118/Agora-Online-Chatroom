@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_chat_room_bg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_chat_room"
+    tools:context=".activity.ChatRoomActivity">
+
+    <LinearLayout
+        android:id="@+id/ll_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:gravity="center">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_portrait"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@mipmap/portrait_0"
+            app:civ_border_color="#FFFFFFFF"
+            app:civ_border_width="2dp" />
+
+        <TextView
+            android:id="@+id/txt_host_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/img_portrait"
+            android:textColor="#305F7D" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txt_topic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_profile"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/bg_topic"
+        android:paddingBottom="2dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="2dp"
+        android:text="深夜卧谈"
+        android:textColor="#305F7D" />
+
+    <LinearLayout
+        android:id="@+id/ll_participants"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_below="@id/txt_topic"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="50dp"
+        android:background="#D3FDFF"
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_participants"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="10" />
+
+        <TextView
+            android:id="@+id/txt_num"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#FFFFFF"
+            android:gravity="center"
+            android:text="3人" />
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_msg_list"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@id/ll_participants"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="20dp"
+        android:scrollbars="vertical" />
+
+    <LinearLayout
+        android:id="@+id/ll_controller"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_up"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_btn"
+            android:text="上麦"
+            android:textColor="#366683"
+            android:textSize="10sp" />
+
+        <Button
+            android:id="@+id/btn_mute"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_btn"
+            android:text="闭麦"
+            android:textColor="#366683"
+            android:textSize="10sp" />
+
+        <Button
+            android:id="@+id/btn_img"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_btn"
+            android:text="背景"
+            android:textColor="#366683"
+            android:textSize="10sp" />
+
+        <Button
+            android:id="@+id/btn_music"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_btn"
+            android:text="音乐"
+            android:textColor="#366683"
+            android:textSize="10sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_msg"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_above="@id/ll_controller"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/edt_msg"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="3"
+            android:hint="说点什么" />
+
+        <Button
+            android:id="@+id/btn_msg_send"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_btn"
+            android:text="发送"
+            android:textColor="#366683"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+</RelativeLayout>
