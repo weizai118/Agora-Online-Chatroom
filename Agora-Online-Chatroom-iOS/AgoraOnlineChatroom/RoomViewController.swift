@@ -149,6 +149,10 @@ private extension RoomViewController {
     func loadAgoraMediaKit() {
         agoraMediaKit = AgoraRtcEngineKit.sharedEngine(withAppId: KeyCenter.appId(), delegate: self)
         agoraMediaKit.setChannelProfile(.liveBroadcasting)
+        
+        if externalRole == .owner {
+            agoraMediaKit.setAudioProfile(.musicHighQualityStereo, scenario: .default)
+        }
     }
     
     func mediaJoinChannel() {
