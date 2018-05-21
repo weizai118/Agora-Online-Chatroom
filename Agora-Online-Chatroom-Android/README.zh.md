@@ -12,13 +12,13 @@
 - 更换聊天室的背景图片和音乐（仅限房主）
 
 ## 运行示例程序
-**Step 1 : ** 在 [Agora.io 注册](https://dashboard.agora.io/cn/signup/) 注册账号，并创建自己的测试项目，获取到 AppID。将 AppID 填写进 "app/src/main/res/values/strings.xml"
+**Step 1 :** 在 [Agora.io 注册](https://dashboard.agora.io/cn/signup/) 注册账号，并创建自己的测试项目，获取到 AppID。将 AppID 填写进 "app/src/main/res/values/strings.xml"
 
 ```
 <string name="agora_app_id"><#YOUR APP ID#></string>
 ```
 
-**Step 2 : ** 是集成 Agora SDK，集成方式有以下两种：
+**Step 2 :** 是集成 Agora SDK，集成方式有以下两种：
 
 - 首选集成方式：
 
@@ -40,7 +40,7 @@ compile 'io.agora.rtc:full-sdk:2.2.0'
 compile fileTree(dir: 'libs', include: ['*.jar'])
 ```
 
-**Step 3 : ** 集成信令 SDK
+**Step 3 :** 集成信令 SDK
 
 - 第一步: 在 [Agora.io SDK](https://www.agora.io/cn/download/) 下载信令 SDK，解压后将其中的 libs 文件夹下的 *.jar 复制到本项目的 app/libs 下，其中的 libs 文件夹下的 arm64-v8a/x86/armeabi-v7a 复制到本项目的 app/src/main/jniLibs 下。
 
@@ -48,7 +48,7 @@ compile fileTree(dir: 'libs', include: ['*.jar'])
 
   compile fileTree(dir: 'libs', include: ['*.jar'])
 
-**Step 4 : ** 用 Android Studio 打开该项目，连上设备，编译并运行。
+**Step 4 :** 用 Android Studio 打开该项目，连上设备，编译并运行。
 
 也可以使用 `Gradle` 直接编译运行。
 

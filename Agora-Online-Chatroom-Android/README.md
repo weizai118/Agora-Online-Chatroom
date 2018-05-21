@@ -12,13 +12,13 @@ With this sample app, you can:
 - Change the background picture and music of the chat room (homeowner only)
 
 ## Running the App
-**Step 1 : ** create a developer account at [Agora.io](https://dashboard.agora.io/signin/), and obtain an App ID. Update "app/src/main/res/values/strings.xml" with your App ID.
+**Step 1 :** create a developer account at [Agora.io](https://dashboard.agora.io/signin/), and obtain an App ID. Update "app/src/main/res/values/strings.xml" with your App ID.
 
 ```
 <string name="agora_app_id"><#YOUR APP ID#></string>
 ```
 
-**Step 2 : ** integrate the Agora Video SDK and there are two ways to integrate:
+**Step 2 :** integrate the Agora Video SDK and there are two ways to integrate:
 
 - The recommended way to integrate:
 
@@ -38,7 +38,7 @@ Then, add the fllowing code in the property of the dependence of the "app/build.
 compile fileTree(dir: 'libs', include: ['*.jar'])
 ```
 
-**Step 3 : ** integrate the Agora Signal SDK
+**Step 3 :** integrate the Agora Signal SDK
 
 - The first step is to download the signaling SDK in [Agora.io SDK](https://www.agora.io/en/download/). After decompressing, copy the *.jar under the LIBS folder to the app/libs of this project. The arm64-v8a/x86/armeabi-v7a under the LIBS folder is copied to the app/src/main/jniLibs of this project.
 
@@ -46,7 +46,7 @@ compile fileTree(dir: 'libs', include: ['*.jar'])
 
   compile fileTree(dir: 'libs', include: ['*.jar'])
 
-**Step 4 : ** open project with Android Studio, connect your Android device, build and run.
+**Step 4 :** open project with Android Studio, connect your Android device, build and run.
 
 Or use `Gradle` to build and run.
 
