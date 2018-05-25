@@ -20,9 +20,6 @@ public class ImgSelectorRecyclerAdapter extends RecyclerView.Adapter<ImgSelector
     private Context mContext;
     private LayoutInflater mInflater;
 
-    private int[] ImgPaths = {R.mipmap.bg_0, R.mipmap.bg_1, R.mipmap.bg_2,
-            R.mipmap.bg_3, R.mipmap.bg_4, R.mipmap.bg_5, R.mipmap.bg_6};
-
     private OnItemClickListener mOnItemClickListener;
 
     public ImgSelectorRecyclerAdapter(Context context) {
@@ -39,7 +36,8 @@ public class ImgSelectorRecyclerAdapter extends RecyclerView.Adapter<ImgSelector
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        holder.img.setImageBitmap(BitmapUtils.readBitMap(mContext, ImgPaths[new Random().nextInt(6)]));
+        int id = mContext.getResources().getIdentifier("io.agora.agorachat:mipmap/bg_" + position, null, null);
+        holder.img.setImageBitmap(BitmapUtils.readBitMap(mContext, id));
         holder.name.setText("背景 " + position);
 
         if (mOnItemClickListener != null){

@@ -240,6 +240,7 @@ public class ChatRoomActivity extends BaseActivity implements SubEngineEventHand
         Msg msg = new Msg(mRole, MsgType.MSG_TYPE_CHANNEL_MSG, mAccount, edtMsg.getText().toString());
         // String channelID, String msg, String msgID
         mSignal.messageChannelSend(mChannelName, mGson.toJson(msg), null);
+        edtMsg.setText("");
     }
 
     @OnClick(R.id.btn_img)
