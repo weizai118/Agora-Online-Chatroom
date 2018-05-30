@@ -1,63 +1,82 @@
-# Agora Online Chatroom
+# Agora Online Chat Room
 
 *其他语言版本： [简体中文](README.zh.md)*
 
-The Agora Android Online ChatRoom App is an open-source demo that will help you build a voice chat room scenario in your Android applications using the Agora SDK.
+The Agora Android Online Chat Room sample app supports the following platforms: 
 
-With this sample app, you can:
+- [iOS](https://github.com/vissidarte/Agora-Online-Chatroom/tree/master/Agora-Online-Chatroom-iOS)
+- [Android](https://github.com/vissidarte/Agora-Online-Chatroom/tree/master/Agora-Online-Chatroom-Android)
 
-- Create / join room
-- Chat with typing
-- host in
-- Change the background picture and music of the chat room (homeowner only)
+This readme describes how to run the Agora Android Online Chat Room sample app.
+
+## Introduction
+
+Built upon the Agora Video SDK v2.2.0 and the Agora Signaling SDK v1.3.0, the Agora Android Online Chat Room sample app is an open-source demo that integrates the voice chat-room feature into your Android apps.
+
+This sample app allows you to:
+
+- Create and join a chat room
+- Send text messages
+- Join the host
+- Change the background image and music of the chat room (owner only)
+
+
+## Development Environment
+
+- Android Studio 2.0 or later
+- Real Android devices, for example Nexus 5X
+
+NOTE: Agora recommends using a real device instead of an emulator.
 
 ## Running the App
-**Step 1 :** create a developer account at [Agora.io](https://dashboard.agora.io/signin/), and obtain an App ID. Update "app/src/main/res/values/strings.xml" with your App ID.
+###1. Create a developer account at [Agora.io](https://dashboard.agora.io/signin/), and obtain an App ID.
+
+   NOTE: For more information, see [Obtaining an App ID](https://docs.agora.io/en/2.2/addons/Signaling/Agora%20Basics/key_signaling?platform=All%20Platforms).
+
+###2. Fill in your App ID in **app/src/main/res/values/strings.xml**.
 
 ```
 <string name="agora_app_id"><#YOUR APP ID#></string>
 ```
+###3. Use one of the following options to integrate the Agora Video SDK.
 
-**Step 2 :** integrate the Agora Video SDK and there are two ways to integrate:
+- The recommended option: Add the Agora SDK information as a Gradle compile dependency to the dependencies block of **app**/**build.gradle** in your project:
 
-- The recommended way to integrate:
+             implementation 'io.agora.rtc:full-sdk:2.2.0'
 
-Add the address which can integrate the Agora Video SDK automatically through JCenter in the property of the dependence of the "app/build.gradle":
-```
-compile 'io.agora.rtc:full-sdk:2.2.0'
-```
-(Adding the link address is the most important step if you want to integrate the Agora Video SDK in your own application.)
+- The manual option:
 
-- Alternative way to integrate:
+   * Download the Agora Video SDK v2.2.0 from [agora.io](https://www.agora.io/en/download/).
+   * Unzip the downloaded SDK package and:
 
-First, download the **Agora Video SDK** from [Agora.io SDK](https://www.agora.io/en/download/). Unzip the downloaded SDK package and copy ***.jar** under **libs** to **app/libs**, **arm64-v8a**/**x86**/**armeabi-v7a** under **libs** to **app/src/main/jniLibs**.
+         - copy ***.jar** under **/libs** to **app/libs**
+         - copy **libs**/**arm64-v8a**/**x86**/**armeabi-v7a** to **app/src/main/jniLibs**.
+   * Add the following command line to the dependency property of **app**/**build.gradle**. 
 
-Then, add the fllowing code in the property of the dependence of the "app/build.gradle":
+             compile fileTree(dir: 'libs', include: ['*.jar'])
 
-```
-compile fileTree(dir: 'libs', include: ['*.jar'])
-```
+###4 Integrate the Agora Signaling SDK.
 
-**Step 3 :** integrate the Agora Signal SDK
+   * Download the Agora Signaling SDK v1.3.0 from [agora.io](https://www.agora.io/en/download/).
+   * Unzip the downloaded SDK package and:
 
-- The first step is to download the signaling SDK in [Agora.io SDK](https://www.agora.io/en/download/). After decompressing, copy the *.jar under the LIBS folder to the app/libs of this project. The arm64-v8a/x86/armeabi-v7a under the LIBS folder is copied to the app/src/main/jniLibs of this project.
+         - copy ***.jar** under **/libs** to **app/libs**
+         - copy **libs**/**arm64-v8a**/**x86**/**armeabi-v7a** to **app/src/main/jniLibs**.
+   * Add the following command line to the dependency property of **app**/**build.gradle**. 
 
-- The second step: add the following dependency in the "app/build.gradle" file dependency property of this project (the example is added in this code):
+            compile fileTree(dir: 'libs', include: ['*.jar'])
 
-  compile fileTree(dir: 'libs', include: ['*.jar'])
+###6. Open your project using Android Studio.
+###7. Connect your Android device to your computer.
+###8. Build and run the sample app.
 
-**Step 4 :** open project with Android Studio, connect your Android device, build and run.
+   NOTE: You can also use `Gradle` to build and run the sample app.
 
-Or use `Gradle` to build and run.
 
-## Developer Environment Requirements
-- Android Studio 2.0 or above
-- Real devices (Nexus 5X or other devices)
-- Some simulators are function missing or have performance issue, so real device is the best choice
+## Contact Us
 
-## Connect Us
-- You can find full API document at [Document Center](https://docs.agora.io/en/)
-- You can file bugs about this demo at [issue](https://github.com/AgoraIO/Agora-Android-Tutorial-1to1/issues)
+- You can find the API documentation at [Developer Center](https://docs.agora.io/en/).
+- You can report issues about this demo at [issue](https://github.com/AgoraIO-Community/Agora-Online-Chatroom/issues).
 
 ## License
 The MIT License (MIT).
