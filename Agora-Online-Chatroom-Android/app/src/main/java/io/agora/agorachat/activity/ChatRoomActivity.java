@@ -115,6 +115,11 @@ public class ChatRoomActivity extends BaseActivity implements SubEngineEventHand
 
     private int[] paths = {R.mipmap.portrait_0, R.mipmap.portrait_1, R.mipmap.portrait_2, R.mipmap.portrait_3};
 
+    private int mBgPosition;
+
+    // 这个 field 用于保存房主的 account
+    private String mOwnerAccount;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -188,6 +193,12 @@ public class ChatRoomActivity extends BaseActivity implements SubEngineEventHand
         getWorkerThread().joinChannel(mChannelName, getEngineConfig().getUid());
 
         setVolumeControlStream(AudioManager.STREAM_VOICE_CALL);
+
+        // 初始化背景
+        if (mRole == AppConstants.CLIENT_ROLE_OWNER) {
+            int id = getResources().getIdentifier("io.agora.agorachat:mipmap/bg_" + 0, null, null);
+            llChatRoomBg.setBackgroundResource(id);
+        }
     }
 
     @Override
@@ -196,7 +207,9 @@ public class ChatRoomActivity extends BaseActivity implements SubEngineEventHand
         getEngineEventHandleManager().removeEventHandler(this);
 
         // 发送离开频道的频道消息
-        mSignal.messageChannelSend(mChannelName, mGson.toJson(new Msg(mRole, MsgType.MSG_TYPE_LEAVE_CHANNEL, mAccount, "离开频道")), null);
+        if (mRole == AppConstants.CLIENT_ROLE_OWNER) {
+            mSignal.messageChannelSend(mChannelName, mGson.toJson(new Msg(mRole, MsgType.MSG_TYPE_LEAVE_CHANNEL, mAccount, "离开频道")), null);
+        }
 
         mSignal.channelLeave(mChannelName);
         mSignal.logout();
@@ -207,7 +220,7 @@ public class ChatRoomActivity extends BaseActivity implements SubEngineEventHand
         if (mRole == CLIENT_ROLE_AUDIENCE) {
             Msg msg = new Msg(mRole, MsgType.MSG_TYPE_APPLY_HOST_IN, mAccount, "");
             // String channelID, String msg, String msgID
-            mSignal.messageChannelSend(mChannelName, mGson.toJson(msg), null);
+            mSignal.messageInstantSend(mOwnerAccount, 0, mGson.toJson(msg), null);
         } else if (mRole == CLIENT_ROLE_BROADCASTER) {
             getWorkerThread().getRtcEngine().setClientRole(CLIENT_ROLE_AUDIENCE);
             mSignal.messageChannelSend(mChannelName, mGson.toJson(new Msg(mRole, MsgType.MSG_TYPE_CHANNEL_MSG, mAccount, "下麦")), null);
@@ -263,6 +276,7 @@ public class ChatRoomActivity extends BaseActivity implements SubEngineEventHand
         mImgSelectorRecyclerAdapter.setOnItemClickListener(new ImgSelectorRecyclerAdapter.OnItemClickListener() {
             @Override
             public void onClick(int position) {
+                mBgPosition = position;
                 int id = getResources().getIdentifier("io.agora.agorachat:mipmap/bg_" + position, null, null);
                 llChatRoomBg.setBackgroundResource(id);
                 mSignal.messageChannelSend(mChannelName, mGson.toJson(new Msg(mRole, MsgType.MSG_TYPE_CHANGE_IMG, mAccount, "" + position)), null);
@@ -335,39 +349,79 @@ public class ChatRoomActivity extends BaseActivity implements SubEngineEventHand
                 super.onLoginSuccess(i, i1);
                 Log.d("onLoginSuccess", "signal login success");
 
-                // 登录信令之前先初始化所有头像
-                mSignal.channelQueryUserNum(mChannelName);
-
                 mSignal.channelJoin(mChannelName);
             }
 
+            /**
+             * 其他用户加入频道回调
+             *
+             * @param s 客户端定义的用户账号 (account)
+             * @param i 固定填 0 (uid)
+             */
             @Override
-            public void onChannelQueryUserNumResult(String s, int i, final int i1) {
-                // String channelID, int ecode, int num
-                super.onChannelQueryUserNumResult(s, i, i1);
-                Log.d("人数", i1 + "");
+            public void onChannelUserJoined(final String s, int i) {
+                super.onChannelUserJoined(s, i);
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        // 初始化频道内所有用户头像
-                        for (int j = 0; j < i1; j++) {
-                            Usr usr = new Usr();
-                            mUsrListItems.add(usr);
-                        }
+                        MsgListItem msgListItem = new MsgListItem(s, "加入频道");
+                        mMsgListItems.add(msgListItem);
+                        mMsgListRecyclerAdapter.notifyItemInserted(mMsgListItems.size() - 1);
+                        recyclerMsgList.scrollToPosition(mMsgListItems.size() - 1);
+                        // 增加头像
+                        mUsrListItems.add(new Usr());
                         mUsrListRecyclerAdapter.notifyDataSetChanged();
                         txtNum.setText(mUsrListItems.size() + "人");
                         recyclerParticipants.scrollToPosition(mUsrListItems.size() - 1);
+                        // 当有用户加入频道，发一条点对点消息告知该用户自己在频道内
+                        mSignal.messageInstantSend(s, 0, mGson.toJson(new Msg(mRole, MsgType.MSG_TYPE_IN_CHANNEL, mAccount, "加入频道")), null);
+                        // 当有用户加入频道时，房主发一条点对点消息告诉用户当前的背景
+                        mSignal.messageInstantSend(s, 0, mGson.toJson(new Msg(mRole, MsgType.MSG_TYPE_CHANGE_IMG, mAccount, "" + mBgPosition)), null);
                     }
                 });
+            }
 
+            /**
+             * 其他用户离开频道回调
+             *
+             * @param s
+             * @param i
+             */
+            @Override
+            public void onChannelUserLeaved(final String s, int i) {
+                super.onChannelUserLeaved(s, i);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        MsgListItem msgListItem = new MsgListItem(s, "离开频道");
+                        mMsgListItems.add(msgListItem);
+                        mMsgListRecyclerAdapter.notifyItemInserted(mMsgListItems.size() - 1);
+                        recyclerMsgList.scrollToPosition(mMsgListItems.size() - 1);
+                        // 删除头像
+                        if (mUsrListItems != null && mUsrListItems.size() > 0) {
+                            mUsrListItems.remove(0);
+                            mUsrListRecyclerAdapter.notifyItemRemoved(0);
+                            recyclerParticipants.scrollToPosition(0);
+                            txtNum.setText(mUsrListItems.size() + "人");
+                        }
+                    }
+                });
             }
 
             @Override
             public void onChannelJoined(String s) {
                 // String channelID
                 super.onChannelJoined(s);
-                // 发送加入频道成功的频道消息
-                mSignal.messageChannelSend(s, mGson.toJson(new Msg(mRole, MsgType.MSG_TYPE_IN_CHANNEL, mAccount, "加入频道")), null);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        // 初始化频道内当前用户头像
+                        mUsrListItems.add(new Usr());
+                        mUsrListRecyclerAdapter.notifyDataSetChanged();
+                        txtNum.setText(mUsrListItems.size() + "人");
+                        recyclerParticipants.scrollToPosition(mUsrListItems.size() - 1);
+                    }
+                });
             }
 
             @Override
@@ -378,23 +432,6 @@ public class ChatRoomActivity extends BaseActivity implements SubEngineEventHand
                 final Msg msg = mGson.fromJson(s2, Msg.class);
                 final int role = msg.getRole();
                 switch (msg.getType()) {
-                    case MsgType.MSG_TYPE_IN_CHANNEL:
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                MsgListItem msgListItem = new MsgListItem(role == AppConstants.CLIENT_ROLE_OWNER ? s1 + "(房主)" : s1, mGson.fromJson(s2, Msg.class).getMsg());
-                                mMsgListItems.add(msgListItem);
-                                mMsgListRecyclerAdapter.notifyItemInserted(mMsgListItems.size() - 1);
-                                recyclerMsgList.scrollToPosition(mMsgListItems.size() - 1);
-                                // 添加头像
-                                Usr usr = new Usr(s1);
-                                mUsrListItems.add(usr);
-                                mUsrListRecyclerAdapter.notifyItemInserted(mUsrListItems.size() - 1);
-                                txtNum.setText(mUsrListItems.size() + "人");
-                                recyclerParticipants.scrollToPosition(mUsrListItems.size() - 1);
-                            }
-                        });
-                        break;
                     case MsgType.MSG_TYPE_LEAVE_CHANNEL:
                         runOnUiThread(new Runnable() {
                             @Override
@@ -402,18 +439,6 @@ public class ChatRoomActivity extends BaseActivity implements SubEngineEventHand
                                 if (role == AppConstants.CLIENT_ROLE_OWNER && mRole != AppConstants.CLIENT_ROLE_OWNER) {
                                     Toast.makeText(ChatRoomActivity.this, "房主注销了房间", Toast.LENGTH_SHORT).show();
                                     ChatRoomActivity.this.finish();
-                                } else {
-                                    MsgListItem msgListItem = new MsgListItem(role == AppConstants.CLIENT_ROLE_OWNER ? s1 + "(房主)" : s1, mGson.fromJson(s2, Msg.class).getMsg());
-                                    mMsgListItems.add(msgListItem);
-                                    mMsgListRecyclerAdapter.notifyItemInserted(mMsgListItems.size() - 1);
-                                    recyclerMsgList.scrollToPosition(mMsgListItems.size() - 1);
-                                    // 删除头像
-                                    if (mUsrListItems != null && mUsrListItems.size() > 0) {
-                                        mUsrListItems.remove(0);
-                                        mUsrListRecyclerAdapter.notifyItemRemoved(0);
-                                        recyclerParticipants.scrollToPosition(0);
-                                        txtNum.setText(mUsrListItems.size() + "人");
-                                    }
                                 }
                             }
                         });
@@ -429,28 +454,51 @@ public class ChatRoomActivity extends BaseActivity implements SubEngineEventHand
                             }
                         });
                         break;
+                    case MsgType.MSG_TYPE_CHANGE_IMG:
+                        if (role == AppConstants.CLIENT_ROLE_OWNER) {
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    int id = getResources().getIdentifier("io.agora.agorachat:mipmap/bg_" + msg.getMsg(), null, null);
+                                    llChatRoomBg.setBackgroundResource(id);
+                                }
+                            });
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            @Override
+            public void onMessageInstantReceive(final String s, int i, final String s1) {
+                // String account, int uid, String msg
+                super.onMessageInstantReceive(s, i, s1);
+                final Msg msg = mGson.fromJson(s1, Msg.class);
+                final int role = msg.getRole();
+                switch (msg.getType()) {
                     case MsgType.MSG_TYPE_APPLY_HOST_IN:
                         if (mRole == AppConstants.CLIENT_ROLE_OWNER) {
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    MsgListItem msgListItem = new MsgListItem(s1, "申请连麦");
+                                    MsgListItem msgListItem = new MsgListItem(s, "申请连麦");
                                     mMsgListItems.add(msgListItem);
                                     mMsgListRecyclerAdapter.notifyItemInserted(mMsgListItems.size() - 1);
                                     recyclerMsgList.scrollToPosition(mMsgListItems.size() - 1);
 
                                     AlertDialog.Builder builder = new AlertDialog.Builder(ChatRoomActivity.this);
-                                    builder.setMessage(s1 + " 申请连麦")
+                                    builder.setMessage(s + " 申请连麦")
                                             .setPositiveButton("同意", new DialogInterface.OnClickListener() {
                                                 @Override
                                                 public void onClick(DialogInterface dialog, int which) {
-                                                    mSignal.messageInstantSend(s1, 0, mGson.toJson(new Msg(mRole, MsgType.MSG_TYPE_REPLY, mAccount, "1")), null);
+                                                    mSignal.messageInstantSend(s, 0, mGson.toJson(new Msg(mRole, MsgType.MSG_TYPE_REPLY, mAccount, "1")), null);
                                                 }
                                             })
                                             .setNegativeButton("拒绝", new DialogInterface.OnClickListener() {
                                                 @Override
                                                 public void onClick(DialogInterface dialog, int which) {
-                                                    mSignal.messageInstantSend(s1, 0, mGson.toJson(new Msg(mRole, MsgType.MSG_TYPE_REPLY, mAccount, "0")), null);
+                                                    mSignal.messageInstantSend(s, 0, mGson.toJson(new Msg(mRole, MsgType.MSG_TYPE_REPLY, mAccount, "0")), null);
                                                 }
                                             })
                                             .create()
@@ -470,17 +518,23 @@ public class ChatRoomActivity extends BaseActivity implements SubEngineEventHand
                             });
                         }
                         break;
-                    default:
-                        break;
-                }
-            }
+                    case MsgType.MSG_TYPE_IN_CHANNEL:
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                // 添加头像
+                                Usr usr = new Usr(s1);
+                                mUsrListItems.add(usr);
+                                mUsrListRecyclerAdapter.notifyItemInserted(mUsrListItems.size() - 1);
+                                txtNum.setText(mUsrListItems.size() + "人");
+                                recyclerParticipants.scrollToPosition(mUsrListItems.size() - 1);
 
-            @Override
-            public void onMessageInstantReceive(String s, int i, String s1) {
-                // String account, int uid, String msg
-                super.onMessageInstantReceive(s, i, s1);
-                final Msg msg = mGson.fromJson(s1, Msg.class);
-                switch (msg.getType()) {
+                                if (role == AppConstants.CLIENT_ROLE_OWNER && mRole != AppConstants.CLIENT_ROLE_OWNER) {
+                                    mOwnerAccount = s;
+                                }
+                            }
+                        });
+                        break;
                     case MsgType.MSG_TYPE_REPLY:
                         if (mRole == CLIENT_ROLE_AUDIENCE) {
                             runOnUiThread(new Runnable() {
